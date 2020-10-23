@@ -1,0 +1,48 @@
+$bg-main: rgb(236, 236, 236);
+$dark: #333;
+$dark-night: rgb(22, 22, 22);
+$light: lightgrey;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  background-color: $bg-main;
+  font-size: 1.1em;
+  font-family: sans-serif;
+  color: $dark;
+  min-height: 100vh;
+}
+
+.nav {
+  background-color: $dark;
+  &__menu {
+    width: 1300px;
+    padding: 0 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $bg-main;
+  padding: 15px 20px;
+  &--active {
+    background-color: $bg-main;
+    color: $dark-night;
+  }
+}
+
+.box {
+  border: 1px solid $light;
+  padding: 15px;
+  margin-bottom: 15px;
+  &__item {
+    padding: 4px 0;
+  }
+}
