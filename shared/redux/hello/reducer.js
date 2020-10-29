@@ -1,4 +1,4 @@
-import { SAY_HELLO } from "./types"
+import { SAY_HELLO, CHANGE_NAME } from "./types"
 
 const initState = {
   hello: false,
@@ -10,6 +10,11 @@ const helloReducer = (state = initState, action) => {
     case SAY_HELLO:
       return {
         hello: !state.hello,
+        name: action.payload,
+      }
+    case CHANGE_NAME:
+      return {
+        ...state,
         name: action.payload,
       }
     default:

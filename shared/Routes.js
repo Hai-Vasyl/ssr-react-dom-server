@@ -3,26 +3,33 @@ import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import App from "./App"
 import Users from "./pages/Users"
+import User from "./pages/User"
 
 export default [
   {
-    component: App,
+    ...App,
     routes: [
       {
-        component: Home,
+        ...Home,
         exact: true,
         path: "/",
       },
       {
-        component: About,
+        ...About,
         path: "/about",
       },
       {
-        component: Users,
+        ...Users,
+        exact: true,
         path: "/users",
       },
       {
-        component: NotFound,
+        ...User,
+        path: "/users/:userId",
+      },
+      {
+        path: "*",
+        ...NotFound,
       },
     ],
   },

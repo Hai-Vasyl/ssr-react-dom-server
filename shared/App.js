@@ -7,9 +7,13 @@ const App = ({ route }) => {
     <div className='wrapper'>
       <Navbar />
       <div>App component!</div>
-      {renderRoutes(route.routes)}
+      <div>{renderRoutes(route.routes)}</div>
     </div>
   )
 }
 
-export default App
+App.defaultProps = {
+  route: null,
+}
+
+export default { component: App }

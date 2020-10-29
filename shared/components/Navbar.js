@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom"
 
 const links = [
   { to: "/", exact: true, name: "Home" },
-  { to: "/users", name: "All users" },
+  { to: "/users", exact: true, name: "All users" },
   { to: "/about", name: "About" },
+  { to: "/users/1", name: "Leanne Graham" },
+  { to: "/users/2", name: "Ervin Howell" },
+  { to: "/users/3", name: "Chelsey Dietrich" },
 ]
 
 const Navbar = () => {

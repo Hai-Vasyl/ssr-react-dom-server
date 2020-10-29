@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from "react"
-import { userFetch } from "../../client/redux/users/actions"
+import React, { useEffect } from "react"
+import { userFetch } from "../redux/users/actions"
 import { useSelector, useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 
-const Users = ({ route }) => {
+const Users = () => {
   const {
-    users: { users, load, errors },
+    users: { users, load, error },
   } = useSelector((state) => state)
   const dispatch = useDispatch()
-  const [initLoad, setInitLoad] = useState(true)
 
   useEffect(() => {
-    dispatch(userFetch())
-    setInitLoad(false)
+    if (!users.length) {
+      dispatch(userFetch())
+    }
   }, [dispatch])
 
-  if (initLoad || load) {
+  if (load) {
     return <div>Loading...</div>
   }
-  if (errors) {
+  if (error) {
     return <div>Errors happend (</div>
   }
   return (
@@ -27,6 +28,7 @@ const Users = ({ route }) => {
         {users.map((user) => {
           return (
             <div className='box' key={user.id}>
+              <Link to={`/users/${user.id}`}>{user.name}</Link>
               <div className='box__item'>Name: {user.name}</div>
               <div className='box__item'>Username: {user.username}</div>
               <div className='box__item'>Email: {user.email}</div>
@@ -46,4 +48,9 @@ const Users = ({ route }) => {
   )
 }
 
-export default Users
+const fetchData = (store) => store.dispatch(userFetch())
+
+export default {
+  component: Users,
+  fetchData,
+}

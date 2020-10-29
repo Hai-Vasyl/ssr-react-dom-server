@@ -5,13 +5,18 @@
   "author": "Hai-Vasyl <hai.vasyl20@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:dev": "webpack serve --config ./webpack.dev.js --mode development",
+    "======== Build ========": "",
+    "build:client": "webpack --mode development --config webpack.client.js",
+    "build:server": "webpack --mode development --config webpack.server.js",
+    "build:prod": "webpack --mode production --config webpack.prod.js",
+    "======== Watch ========": "",
+    "watch:server": "webpack --mode development --config webpack.server.js --watch",
+    "watch:client": "webpack --mode development --config webpack.client.js --watch",
+    "======== Start ========": "",
     "server": "nodemon dist/server/server.js",
-    "build:dev-client": "webpack --mode development --config webpack.client.js",
-    "build:dev-server": "webpack --mode development --config webpack.server.js",
-    "start:client-dev": "webpack serve --config ./webpack.client.js --mode development",
-    "start:server-dev": "webpack serve --config ./webpack.server.js --mode development",
-    "start": "concurrently \"yarn start:server-dev\" \"yarn start:client-dev\""
+    "start:dev": "concurrently \"yarn watch:client\" \"yarn watch:server\"",
+    "start:server": "concurrently \"yarn watch:server\" \"yarn server\" ",
+    "start": "concurrently \"yarn start:dev\" \"yarn server\""
   },
   "dependencies": {
     "@babel/runtime": "^7.12.1",
@@ -24,6 +29,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "express": "^4.17.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-redux": "^7.2.1",
@@ -36,6 +42,7 @@
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "babel-loader": "^8.1.0",
@@ -47,12 +54,15 @@
     "mini-css-extract-plugin": "^1.1.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.6",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "sass-loader": "^10.0.3",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.0.0",
     "webpack": "^5.1.3",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.7.2",
-    "webpack-merge": "^5.2.0"
+    "webpack-merge": "^5.2.0",
+    "webpack-node-externals": "^2.5.2",
+    "webpack-stats-plugin": "^1.0.1"
   }
 }
